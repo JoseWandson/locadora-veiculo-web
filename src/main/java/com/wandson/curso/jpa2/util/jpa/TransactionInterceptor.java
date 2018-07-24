@@ -2,6 +2,7 @@ package com.wandson.curso.jpa2.util.jpa;
 
 import java.io.Serializable;
 
+import javax.annotation.Priority;
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
@@ -11,6 +12,7 @@ import javax.persistence.EntityTransaction;
 
 @Interceptor
 @Transactional
+@Priority(Interceptor.Priority.APPLICATION + 1)
 public class TransactionInterceptor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
