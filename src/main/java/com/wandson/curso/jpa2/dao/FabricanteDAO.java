@@ -18,7 +18,7 @@ public class FabricanteDAO implements Serializable {
 	private EntityManager em;
 
 	public void salvar(Fabricante fabricante) {
-		em.persist(fabricante);
+		em.merge(fabricante);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -31,6 +31,10 @@ public class FabricanteDAO implements Serializable {
 		fabricante = em.find(Fabricante.class, fabricante.getCodigo());
 		em.remove(fabricante);
 		em.flush();
+	}
+
+	public Fabricante buscarPeloCodigo(Long codigo) {
+		return em.find(Fabricante.class, codigo);
 	}
 
 }
