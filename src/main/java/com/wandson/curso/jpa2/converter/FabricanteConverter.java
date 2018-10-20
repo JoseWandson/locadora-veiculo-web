@@ -29,10 +29,8 @@ public class FabricanteConverter implements Converter<Fabricante> {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Fabricante value) {
 		if (value != null) {
-			Long codigo = ((Fabricante) value).getCodigo();
-			String retorno = (codigo == null ? null : codigo.toString());
-
-			return retorno;
+			Long codigo = value.getCodigo();
+			return (codigo == null ? null : codigo.toString());
 		}
 
 		return "";
