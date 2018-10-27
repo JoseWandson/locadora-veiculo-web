@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import com.wandson.curso.jpa2.dao.CarroDAO;
 import com.wandson.curso.jpa2.modelo.Carro;
 
-@FacesConverter(forClass = Carro.class)
+@FacesConverter(forClass = Carro.class, managed = true)
 public class CarroConverter implements Converter<Carro> {
 
 	@Inject
