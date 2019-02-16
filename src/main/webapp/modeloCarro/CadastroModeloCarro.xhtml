@@ -24,10 +24,10 @@
 	    		<p:toolbarGroup>
 	    			<p:commandButton value="Salvar" id="botaoSalvar" action="#{cadastroModeloCarroBean.salvar}" update="frmCadastro"/>
 	    		</p:toolbarGroup>
-	    		<p:toolbarGroup align="right">
-					<p:button value="Pesquisa"/>
+				<p:toolbarGroup align="right">
+					<p:button value="Pesquisa" outcome="PesquisaModeloCarro" />
 				</p:toolbarGroup>
-	    	</p:toolbar>
+			</p:toolbar>
 	    	
 	    	<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px"
 	    			columnClasses="rotulo, campo">
