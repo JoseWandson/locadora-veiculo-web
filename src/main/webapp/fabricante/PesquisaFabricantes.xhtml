@@ -41,14 +41,17 @@
 						</p:commandButton>
 		    		</p:column>
 		    </p:dataTable>
-		    
-		    <p:confirmDialog id="confirmacaoExclusaoDialog" widgetVar="confirmacaoExclusao"
-	        		message="Tem certeza que deseja excluir o fabricante #{pesquisaFabricanteBean.fabricanteSelecionado.nome}?"  
-	                header="Exclusão de fabricante" severity="alert">
-	        	<p:button value="Não" onclick="confirmacaoExclusao.hide(); return false;" />
-	        	<p:commandButton value="Sim" update=":frmPesquisa:fabricantesTable"
-	        			onclick="confirmacaoExclusao.hide()" action="#{pesquisaFabricanteBean.excluir}" />
-	    	</p:confirmDialog>
-	    </h:form>
+
+			<p:confirmDialog id="confirmacaoExclusaoDialog"
+				widgetVar="confirmacaoExclusao"
+				message="Tem certeza que deseja excluir o fabricante #{pesquisaFabricanteBean.fabricanteSelecionado.nome}?"
+				header="Exclusão de fabricante" severity="alert">
+				<p:button value="Não"
+					onclick="PF('confirmacaoExclusao').hide(); return false;" />
+				<p:commandButton value="Sim" update=":frmPesquisa:fabricantesTable"
+					onclick="PF('confirmacaoExclusao').hide()"
+					action="#{pesquisaFabricanteBean.excluir}" />
+			</p:confirmDialog>
+		</h:form>
     </ui:define>
 </ui:composition>

@@ -41,7 +41,12 @@
 				</p:column>
 				<p:column headerText="Acessórios"
 					style="width: 100px; text-align: center">
-					<p:commandButton icon="ui-icon-extlink" title="Acessórios">
+					<p:commandButton icon="ui-icon-extlink" title="Acessórios"
+						action="#{pesquisaCarroBean.buscarCarroComAcessorios}"
+						process="@this" oncomplete="PF('mostraAcessorios').show()"
+						update=":frmPesquisa:mostraAcessoriosDialog">
+						<f:setPropertyActionListener
+							target="#{pesquisaCarroBean.carroSelecionado}" value="#{carro}" />
 					</p:commandButton>
 				</p:column>
 				<p:column style="width: 100px; text-align: center">
@@ -50,7 +55,7 @@
 						<f:param name="carro" value="#{carro.codigo}" />
 					</p:button>
 					<p:commandButton icon="ui-icon-trash" title="Excluir"
-						oncomplete="confirmacaoExclusao.show()" process="@this"
+						oncomplete="PF('confirmacaoExclusao').show()" process="@this"
 						update=":frmPesquisa:confirmacaoExclusaoDialog">
 						<f:setPropertyActionListener
 							target="#{pesquisaCarroBean.carroSelecionado}" value="#{carro}" />
@@ -63,11 +68,22 @@
 				message="Tem certeza que deseja excluir o carro de placa #{pesquisaCarroBean.carroSelecionado.placa}?"
 				header="Exclusão de carro" severity="alert">
 				<p:button value="Não"
-					onclick="confirmacaoExclusao.hide(); return false;" />
+					onclick="PF('confirmacaoExclusao').hide(); return false;" />
 				<p:commandButton value="Sim" update=":frmPesquisa:carrosTable"
-					onclick="confirmacaoExclusao.hide()"
+					onclick="PF('confirmacaoExclusao').hide()"
 					action="#{pesquisaCarroBean.excluir}" />
 			</p:confirmDialog>
+
+			<p:dialog id="mostraAcessoriosDialog" header="Acessórios"
+				widgetVar="mostraAcessorios" modal="true">
+				<p:dataList value="#{pesquisaCarroBean.carroSelecionado.acessorios}"
+					var="acessorio" itemType="disc"
+					rendered="#{not empty pesquisaCarroBean.carroSelecionado.acessorios}">
+    				#{acessorio.descricao}
+    			</p:dataList>
+				<h:outputText value="Nenhum acessório"
+					rendered="#{empty pesquisaCarroBean.carroSelecionado.acessorios}" />
+			</p:dialog>
 
 		</h:form>
 	</ui:define>
