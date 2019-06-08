@@ -43,7 +43,15 @@
 	    		
 	    		<p:outputLabel value="Modelo" for="modelo"/>
 	    		<p:inputText id="modelo" size="60" maxlength="80" value="#{cadastroModeloCarroBean.modeloCarro.descricao}"/>
-	    	</p:panelGrid>
+
+				<p:outputLabel value="Categoria" for="categoria" />
+				<p:selectOneMenu id="categoria"
+					value="#{cadastroModeloCarroBean.modeloCarro.categoria}">
+					<f:selectItem itemLabel="Selecione a categoria" />
+					<f:selectItems value="#{cadastroModeloCarroBean.categorias}"
+						var="categoria" itemLabel="#{categoria}" itemValue="#{categoria}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
     	</h:form>
     </ui:define>
 </ui:composition>

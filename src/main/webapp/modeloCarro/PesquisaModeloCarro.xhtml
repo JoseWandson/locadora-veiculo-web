@@ -32,7 +32,10 @@
 	    		<p:column headerText="Fabricante">
 	    			<h:outputText value="#{modeloCarro.fabricante.nome}" />
 	    		</p:column>
-	    		<p:column style="width: 100px; text-align: center">
+				<p:column headerText="Categoria">
+					<h:outputText value="#{modeloCarro.categoria}" />
+				</p:column>
+				<p:column style="width: 100px; text-align: center">
 		    		<p:button outcome="CadastroModeloCarro" icon="ui-icon-pencil" title="Editar">
 		    			<f:param name="modeloCarro" value="#{modeloCarro.codigo}"/>
 		    		</p:button>
